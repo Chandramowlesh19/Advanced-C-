@@ -1,0 +1,34 @@
+#include <stdio.h>
+ 
+
+ int main() {
+  int n, first = 0, second = 1, next;
+ 
+
+  printf("Enter the limit (n): ");
+  scanf("%d", &n);
+ 
+
+  printf("Fibonacci Series up to %d: ", n);
+ 
+
+  // Print the first two Fibonacci numbers
+  printf("%d, %d, ", first, second);
+ 
+
+  next = first + second;
+ 
+
+  while (next <= n) {
+  printf("%d, ", next);
+  first = second;
+  second = next;
+  next = first + second;
+  }
+ 
+
+  printf("\n");
+ 
+
+  return 0;
+ }
