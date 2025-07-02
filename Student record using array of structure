@@ -1,0 +1,75 @@
+#include <stdio.h>
+#include <string.h> // For strcpy
+
+// Define the Student structure
+struct Student {
+    int roll_number;
+    char name[50];
+    float marks;
+};
+
+// Function to add a new student record
+void addStudent(struct Student students[], int *count, int max_students) {
+    if (*count < max_students) {
+        printf("\nEnter details for student %d:\n", *count + 1);
+        printf("Enter Roll Number: ");
+        scanf("%d", &students[*count].roll_number);
+        printf("Enter Name: ");
+        scanf("%s", students[*count].name); // Reads a single word name
+        printf("Enter Marks: ");
+        scanf("%f", &students[*count].marks);
+        (*count)++;
+        printf("Student record added successfully!\n");
+    } else {
+        printf("Maximum number of students reached. Cannot add more records.\n");
+    }
+}
+
+// Function to display all student records
+void displayStudents(const struct Student students[], int count) {
+    if (count == 0) {
+        printf("\nNo student records to display.\n");
+        return;
+    }
+    printf("\n--- Student Records ---\n");
+    for (int i = 0; i < count; i++) {
+        printf("Student %d:\n", i + 1);
+        printf("  Roll Number: %d\n", students[i].roll_number);
+        printf("  Name: %s\n", students[i].name);
+        printf("  Marks: %.2f\n", students[i].marks);
+    }
+    printf("-----------------------\n");
+}
+
+int main() {
+    const int MAX_STUDENTS = 10; // Maximum number of students
+    struct Student students[MAX_STUDENTS];
+    int student_count = 0; // Current number of students
+
+    int choice;
+
+    do {
+        printf("\nStudent Record Management System\n");
+        printf("1. Add Student\n");
+        printf("2. Display All Students\n");
+        printf("3. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                addStudent(students, &student_count, MAX_STUDENTS);
+                break;
+            case 2:
+                displayStudents(students, student_count);
+                break;
+            case 3:
+                printf("Exiting program. Goodbye!\n");
+                break;
+            default:
+                printf("Invalid choice. Please try again.\n");
+        }
+    } while (choice != 3);
+
+    return 0;
+}
