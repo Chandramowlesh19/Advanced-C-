@@ -1,0 +1,48 @@
+#include <stdio.h>
+
+int main() {
+    int a, n, d_ap; // For AP: first term, number of terms, common difference
+    int r_gp;       // For GP: common ratio
+    int d_hp;       // For HP: common difference of the underlying AP
+
+    printf("Enter the first term (a): ");
+    scanf("%d", &a);
+
+    printf("Enter the number of terms (n): ");
+    scanf("%d", &n);
+
+    // Generate AP Series
+    printf("\n--- Arithmetic Progression (AP) ---\n");
+    printf("Enter the common difference for AP (d): ");
+    scanf("%d", &d_ap);
+    printf("AP Series: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", a + i * d_ap);
+    }
+    printf("\n");
+
+    // Generate GP Series
+    printf("\n--- Geometric Progression (GP) ---\n");
+    printf("Enter the common ratio for GP (r): ");
+    scanf("%d", &r_gp);
+    printf("GP Series: ");
+    int current_gp_term = a;
+    for (int i = 0; i < n; i++) {
+        printf("%d ", current_gp_term);
+        current_gp_term *= r_gp;
+    }
+    printf("\n");
+
+    // Generate HP Series
+    printf("\n--- Harmonic Progression (HP) ---\n");
+    printf("Enter the common difference for the underlying AP of HP (d): ");
+    scanf("%d", &d_hp);
+    printf("HP Series: ");
+    for (int i = 0; i < n; i++) {
+        // HP terms are reciprocals of AP terms
+        printf("1/%d ", a + i * d_hp);
+    }
+    printf("\n");
+
+    return 0;
+}
