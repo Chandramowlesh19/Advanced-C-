@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int fibonacci(int n) {
+    if (n <= 1) {
+        return n;
+    }
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+void printNegativeFibonacci(int n) {
+    for (int i = 1; i <= n; i++) {
+        int fib_n = fibonacci(i);
+        int negative_fib_n = (i % 2 == 0) ? -fib_n : fib_n;
+        printf("%d ", negative_fib_n);
+    }
+    printf("\n");
+}
+
+int main() {
+    int limit;
+    printf("Enter the limit for the negative Fibonacci series: ");
+    scanf("%d", &limit);
+
+    if (limit <= 0) {
+        printf("Please enter a positive integer.\n");
+        return 1;
+    }
+
+    printNegativeFibonacci(limit);
+
+    return 0;
+}
