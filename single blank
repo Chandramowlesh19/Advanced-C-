@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+int main(void) {
+    int c;
+    int lastc = 0; // Initialize with a non-blank value
+
+    while ((c = getchar()) != EOF) {
+        if (c == ' ') {
+            // If the current character is a blank, print it only if the last character was not a blank
+            if (lastc != ' ') {
+                putchar(c);
+            }
+        } else {
+            // If the current character is not a blank, always print it
+            putchar(c);
+        }
+        lastc = c; // Update lastc to the current character
+    }
+
+    return 0;
+}
