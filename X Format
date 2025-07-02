@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+int main() {
+    int i, j;
+    int c;
+
+    // Number of rows and columns for the pattern
+    int n = 5;  
+    c = n * 2;  
+
+    // Loop through each row
+    for (i = 0; i < 2 * n - 1; i++) {
+        
+        // Loop through each column in the row
+        for (j = 0; j < 2 * n - 1; j++) {
+            
+            // Print a star at the diagonal position
+            if (j == i || j == 2 * n - 2 - i)
+                printf("X");  
+            else
+                printf(" ");
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
